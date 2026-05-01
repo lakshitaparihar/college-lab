@@ -1,0 +1,38 @@
+print(r"""
+   ____    _    _____ ____  _____ ____     ____ ___ ____  _   _ _____ ____  
+  / ___|  / \  | ____/ ___|| ____|  _ \   / ___|_ _|  _ \| | | | ____|  _ \ 
+ | |     / _ \ |  _| \___ \|  _| | |_) | | |    | || |_) | |_| |  _| | |_) |
+ | |___ / ___ \| |___ ___) | |___|  _ <  | |___ | ||  __/|  _  | |___|  _ < 
+  \____/_/   \_\_____|____/|_____|_| \_\  \____|___|_|   |_| |_|_____|_| \_\
+                                                                           """)
+
+
+def caeser(operation,ogtxt,shift):
+    if operation=="decode":
+        shift*= -1
+    l=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    for i in ogtxt:
+        if i.isalpha()==True:
+            p+=(l[(l.index(i)+shift)%26])
+        else:
+            p+=i
+    print(f"{operation}d result is:",p,sep="")   
+
+
+carryon=True
+while carryon==True:
+    func=input("type encode or decode to perform the respective operation:\n").lower()
+    message=input("write the message:\n").lower()
+    num=int(input("enter the decided shift:\n"))
+
+    caeser(func,message,num)
+
+    command=input("enter continue or stop to perform the respective command: ").lower()
+    if command=="continue":
+        carryon=True
+    elif command=="stop":
+        carryon=False
+        print("BYEEBYEE!!")
+    else:
+        print("invalid input")
+
