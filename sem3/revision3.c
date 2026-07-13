@@ -16,17 +16,42 @@
 // }
 
 
-#include <stdio.h>
-int sumArray(int arr[], int size){
-    int sum=0;
-    for(int i=0;i<size;i++){
-        sum+=arr[i];
-    }
-    return sum;
-}
+// #include <stdio.h>
+// int sumArray(int arr[], int size){
+//     int sum=0;
+//     for(int i=0;i<size;i++){
+//         sum+=arr[i];     //recived wrong output earlier since used 'i' instead of 'arr[i]'
+//     }
+//     return sum;
+// }
 
+// int main(void){
+//     int num[7]={1,2,3,4,5,6,7};
+//     printf("%d", sumArray(num,7));
+// return 0;
+// }
+
+// #include<stdio.h>
+// int findMax(int arr[], int size){
+//     int max=arr[0];
+//     for(int i=0;i<size;i++){
+//         if(arr[i]>=max){
+//             max=arr[i];
+//         }
+//     }
+//     return max;   //returned arr[0] earlier since tthis statement was inside the loop
+// }
+// int main(void){
+//     int num[4]={6,14,56,9};
+//     printf("%d",findMax(num,4));
+// return 0;
+// }
+
+#include<stdio.h>
+void swap(int *a, int *b){
+
+}
 int main(void){
-    int num[7]={1,2,3,4,5,6,7};
-    printf("%d", sumArray(num,7));
+
 return 0;
 }
