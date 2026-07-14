@@ -49,9 +49,18 @@
 
 #include<stdio.h>
 void swap(int *a, int *b){
+    int temp=*a;
+    *a=*b ;
+    *b=temp;
 
 }
 int main(void){
-
+    int x= 3;
+    int y=9;
+    int *p=&x;
+    int *q=&y;
+    swap(p,q);   // pass only (p,q) and not (*p,*q) since the latter defernces first.
+    printf("x= %d\n",x);
+    printf("y= %d\n",y);
 return 0;
 }
