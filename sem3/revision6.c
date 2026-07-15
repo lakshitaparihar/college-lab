@@ -45,21 +45,64 @@
 
 
 
+// #include<stdio.h>
+// #include<stdlib.h>
+
+// struct Corners{
+//     struct Corners *memo;
+// };
+
+// int countNodes(struct Corners *head){
+//     struct Corners *temp=head;
+//     int num=0;
+//     while(temp!=NULL){
+//         num+=1;
+//         temp = temp->memo;        // MISSING: temp = temp->memo;  -> infinite loop, temp never advances
+//     }
+//     return num;
+// }
+
+// int main(void){
+//     struct Corners *c1=malloc(sizeof(struct Corners));
+//     struct Corners *c2=malloc(sizeof(struct Corners));
+//     struct Corners *c3=malloc(sizeof(struct Corners));
+//     struct Corners *c4=malloc(sizeof(struct Corners));
+//     struct Corners *c5=malloc(sizeof(struct Corners));
+//     struct Corners *c6=malloc(sizeof(struct Corners));
+
+//     //one link was SKIPPED — went straight from c4 to setting c6->memo,
+//     // never linking c5 at all. c5->memo was left as GARBAGE (malloc does NOT
+//     // zero memory). Traversal walked off into invalid memory -> CRASH.
+
+//     c1->memo=c2;                                 // BUG: overwrote c1->memo repeatedly instead of chaining c2->memo, c3->memo, etc
+//     c2->memo=c3;
+//     c3->memo=c4;
+//     c4->memo=c5;
+//     c5->memo=c6;
+//     c6->memo=NULL;
+//                                               // BUG: no %d in format string
+//     printf("num is: %d",countNodes(c1));     // BUG: type declaration used when CALLING a function (should just pass c1)
+// return 0;    
+// }
+
+
+
+
 #include<stdio.h>
 #include<stdlib.h>
 
 struct Corners{
-    struct Corners *memo;
+    int value;
+    struct Corners *memory;
 };
 
-int countNodes(struct Corners *head){
-    struct Corners *temp=head;
-    int num=0;
+void printlist(struct Corners *l){
+    struct Corners *temp=l;
     while(temp!=NULL){
-        num+=1;
-        temp = temp->memo;        // MISSING: temp = temp->memo;  -> infinite loop, temp never advances
+        printf("%d\n", temp->value);
+        temp=temp->memory;
     }
-    return num;
+
 }
 
 int main(void){
@@ -67,20 +110,17 @@ int main(void){
     struct Corners *c2=malloc(sizeof(struct Corners));
     struct Corners *c3=malloc(sizeof(struct Corners));
     struct Corners *c4=malloc(sizeof(struct Corners));
-    struct Corners *c5=malloc(sizeof(struct Corners));
-    struct Corners *c6=malloc(sizeof(struct Corners));
 
-    //one link was SKIPPED — went straight from c4 to setting c6->memo,
-    // never linking c5 at all. c5->memo was left as GARBAGE (malloc does NOT
-    // zero memory). Traversal walked off into invalid memory -> CRASH.
+    c1->value=1;
+    c2->value=11;
+    c3->value=111;
+    c4->value=1111;
+    c1->memory=c2;
+    c2->memory=c3;
+    c3->memory=c4;
+    c4->memory=NULL;
 
-    c1->memo=c2;                                 // BUG: overwrote c1->memo repeatedly instead of chaining c2->memo, c3->memo, etc
-    c2->memo=c3;
-    c3->memo=c4;
-    c4->memo=c5;
-    c5->memo=c6;
-    c6->memo=NULL;
-                                              // BUG: no %d in format string
-    printf("num is: %d",countNodes(c1));     // BUG: type declaration used when CALLING a function (should just pass c1)
+    printlist(c1);
+
 return 0;    
 }
