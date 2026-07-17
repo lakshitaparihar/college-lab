@@ -9,14 +9,14 @@ class rectangle{
     void getdata(int len, int bred){
         length=len;
         breadth=bred;
-        cout<<"length:"<<length;
-        cout<<"breadth:"<<breadth;
+        cout<<"length:"<<length<<endl;
+        cout<<"breadth:"<<breadth<<endl;
     }
     void area();
 };
 
 void rectangle::area(){
-    cout<<"area:"<<length*breadth;
+    cout<<"area:"<<length*breadth<<endl;
 }
 
 int main(void){
