@@ -35,4 +35,28 @@
 //declaaring 'i' at statring once,then it's expression would be, (3n+1).
 //In big-O notation, always ignore the constants which are getiing multipled or divided to "n". Also omit lower value terms.
 // O(constant) example, O(5),O(78) all become O(1).
-//
+
+//Nested Dependent Loops → O(n²)
+// Rule: When a loop runs inside another loop, and the inner loop's iteration count depends on n, you MULTIPLY the loop counts — never add. Loops running one after another (sequential) ADD.
+// Sequential:  loop A (n times); then loop B (n times)  →  n + n  = O(n)
+// Nested:      loop A (n times) { loop B (n times) }    →  n × n  = O(n²)
+// // The shrinking-loop case (like Two Sum, where j starts at i+1):
+// // Inner loop runs (n−1) + (n−2) + ... + 2 + 1 + 0 times total.
+// i=0:  ■ ■ ■ ■ ■ ■     work forms a TRIANGLE
+// i=1:    ■ ■ ■ ■ ■     a triangle is HALF a square
+// i=2:      ■ ■ ■ ■     half of n² is still O(n²)
+// i=3:        ■ ■ ■     (Big O ignores the ½ — constants don't
+// i=4:          ■ ■      change the growth SHAPE)
+// i=5:            ■
+
+// ⚠️ Trap that got me: assuming the inner loop runs a "constant k times." Always ask: does the inner count secretly depend on n? 
+//If yes → multiply → O(n²).
+// Ear-trigger: "for every element, compare with every other element" = pairs = n(n−1)/2 pairs = O(n²) before you write any code.
+
+// //Time–Space Tradeoff:
+// Definition: You can often make an algorithm faster by spending extra memory, or use less memory by accepting more time. 
+//Speed and memory are currencies you exchange.
+//Faster usually isn't free — you buy time with memory (or memory with time). Always state what you paid and what you got.
+
+
+
