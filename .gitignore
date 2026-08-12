@@ -1,0 +1,11 @@
+# Compiled binaries
+*.exe
+*.o
+*.out
+# compiled programs with no extension
+oop-1
+dsa_notes
+practise2
+# Python
+__pycache__/
+.venv/
